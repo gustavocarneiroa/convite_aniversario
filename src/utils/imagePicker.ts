@@ -6,7 +6,7 @@ import Queixo from "../assets/372921740_3583791648610877_2539088449817753179_n.j
 import MeninoDeVo from "../assets/449791155_3814717215518318_941422314375445026_n.jpg";
 import NiceGustavinho from "../assets/gustavinho.png";
 
-function selectRandomItem<T>(array: T[]): { selectedItem: T, itemsLeft: T[] } {
+export function selectRandomItem<T>(array: T[]): { selectedItem: T, itemsLeft: T[] } {
     const randomIndex = Math.floor(Math.random() * array.length);
     const selectedItem = array[randomIndex];
     const itemsLeft = array.filter((_, index) => index !== randomIndex);
