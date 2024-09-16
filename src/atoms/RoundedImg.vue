@@ -4,7 +4,7 @@ const { src, alt, hasShadow, width } = defineProps<{ src: string; alt: string, h
 
 <template>
   <div class="round-image">
-    <img :class="{ 'shadow-bottom': hasShadow }" :srcSet="src" :alt="alt" :style="{ width: `${width ?? 150}px`, height: `${width ?? 150}px` }" />
+    <img :class="{ 'shadow-bottom': hasShadow }" :src="src" :alt="alt" :style="{ width: `${width ?? 150}px`, height: `${width ?? 150}px` }" />
   </div>
 </template>
 

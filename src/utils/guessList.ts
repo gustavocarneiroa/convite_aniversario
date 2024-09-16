@@ -1,5 +1,3 @@
-import { selectRandomItem } from "./imagePicker";
-
 const bp = [
   {
     id: "QWx6aXI6IGNoYXBpbmhhIPCfq7M",
@@ -67,60 +65,21 @@ const subs = [
   return { ...i, location: 1 };
 });
 
-const mpox: MessageFragments[] = [
-  {
-    before: "Eu prefiro que você caia de moto a deixar",
-    after: "de estar presente na",
-  },
-  {
-    before: "Eu sei que você não vai ser corno",
-    after: "o suficiente para faltar",
-  },
-  {
-    before: "Man, parou tá fazendo papel de palhaço",
-    after: "se ficar dizendo que vai faltar, então venha logo para",
-  },
-  {
-    before: "Tu não é nem maluco para ficar dizendo que",
-    after: "vai deixar de vir na",
-  },
-  {
-    before: "Dizem as más línguas que tu se chama Hywaneiva.",
-    after: "Mostre a eles o contrário vindo para",
-  },
-  {
-    before: "Não tem desculpas para não ir:",
-    after:
-      "Não é no The Bar, não é no Pitombeira, nem na esquina da 8. Venha na",
-  },
-  {
-    before: "O próprio THE CHOSEN sussurrou no meu ouvido que eu",
-    after: "um aleijado, devo impedir o Trump. Veja isso na",
-  },
-  {
-    before: "Se não vier é obrigado a ser considerado O MAIOR humorista",
-    after: "da Caucaia. Venha na",
-  },
-  {
-    before: "Se faltar vai ser pai.",
-    after: "Saia do NO PELO FUTEBOL CLUBE e venha na",
-  },
-];
 const locations = [{
-  url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31849.43139772523!2d-38.65448514541054!3d-3.7712137569641406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74ca681b0051d%3A0x19425bbac482e114!2sAraturi%2C%20Caucaia%20-%20CE!5e0!3m2!1spt-BR!2sbr!4v1726252196985!5m2!1spt-BR!2sbr",
-  name: "Casa dos menino",
+  url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.3566224706346!2d-38.572696225257864!3d-3.7322146431910657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74b2c081cdbfd%3A0xb67a6a6339f70ec6!2sParque%20Rachel%20de%20Queiroz%20PK!5e0!3m2!1spt-BR!2sbr!4v1726412882586!5m2!1spt-BR!2sbr",
+  name: "Parque Rachel de Queiroz",
   dateAndHour: "Dia 30/09 às 19:30",
-  eventLink: "https://calendar.app.google/cjm32AdReHmVcTYo9",
+  eventLink: "https://calendar.app.google/qm6BAHjYdmDYpo4E6",
 }, {
   url: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15925.268301852395!2d-38.5627459!3d-3.7409291!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c749d6134a7c21%3A0x88956cd3de7a9324!2sGeek%20Bunker%20Burger%20(Parquel%C3%A2ndia)!5e0!3m2!1spt-BR!2sbr!4v1726185071679!5m2!1spt-BR!2sbr",
   name: "Geek Bunk Burguer - Parquelândia",
   dateAndHour: "Dia 29/09 às 19:00",
-  eventLink: "https://calendar.app.google/cjm32AdReHmVcTYo9",
+  eventLink: "https://calendar.app.google/jyUaGgnN2brpxgQH7",
 }];
 
-const variations = [mpox];
 
-export const guestList = [...bp.map((i) => i.id), ...subs.map((i) => i.id)];
+export const allGuests = [...bp, ...subs];
+export const guestIdList = allGuests.map( guest => guest.id);
 export const checkInvitation = () => {
   const query = new URLSearchParams(window.location.search);
   const inviteHash = query.get("invite");
@@ -130,7 +89,7 @@ export const checkInvitation = () => {
     return {};
   }
   try {
-    if (!guestList.includes(inviteHash)) {
+    if (!guestIdList.includes(inviteHash)) {
       handleNotInvited();
     }
 
@@ -150,19 +109,7 @@ export const handleNotInvited = () => {
   throw new Error("Você não foi convidado")
 };
 
-export function getMessageFromVariation(hash: string): MessageFragments {
-  const invited = [...bp, ...subs].find(({ id }) => id == hash);
-  const message = selectRandomItem<MessageFragments>(variations[invited!.variation]);
-  return message.selectedItem;
-}
-
 export function getLocation(hash: string) {
   const invited = [...bp, ...subs].find(({ id }) => id == hash)!;
   return locations[invited.location];
-}
-
-
-type MessageFragments = {
-  before: string;
-  after: string;
 }

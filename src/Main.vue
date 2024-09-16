@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { checkInvitation, getLocation, getMessageFromVariation, handleNotInvited } from './utils/guessList';
+import { allGuests, checkInvitation, getLocation, handleNotInvited } from './utils/guessList';
 import RoundedImg from './atoms/RoundedImg.vue';
 import { image } from './utils/imagePicker';
 import PIX from './assets/pix.png';
+import { getMessageFromVariation } from './utils/messageFragments';
 
 const name = ref('');
 let fragments = {
@@ -23,7 +24,7 @@ onMounted(() => {
     return;
   } 
   name.value = decodedName;
-  fragments = getMessageFromVariation(inviteHash);
+  fragments = getMessageFromVariation(allGuests ,inviteHash);
   location = getLocation(inviteHash);
 });
 
