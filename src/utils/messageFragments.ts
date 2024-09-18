@@ -155,7 +155,7 @@ export const my_beloved: MessageFragments[] = [
     }
 ]
 
-export const variations = [mpox, aggregateds, b_and_c, juicy, rspct];
+export const variations = [mpox, aggregateds, b_and_c, juicy, rspct, my_beloved];
 
 export function getMessageFromVariation(messages: any[], hash: string): MessageFragments {
     const invited = messages.find(({ id }) => id == hash);
