@@ -162,3 +162,94 @@ export function getMessageFromVariation(messages: any[], hash: string): MessageF
     const message = selectRandomItem<MessageFragments>(variations[invited!.variation]);
     return message.selectedItem;
 }
+
+export function gustavinhoGetter(): string {
+  const gustavinhoVariations = [
+    'O pai aqui',
+    'El petit Gustav',
+    'O Gustavinho',
+    'O Gustavo em modo de ataque',
+    'The Little Gustav',
+    'El Donger III',
+    'O comunista consumista aqui',
+    'Aquele-que-deve-ser-presenteado',
+    'O aniversariante',
+    'O birthday boy',
+    'Lil\'Gus',
+    'O programador mais FOFINHO do Presidente Kennedy',
+    'O Gustavinho pai do ano (🐈‍⬛)',
+    'O garoto de programa aqui',
+    'O jogador profissional de LOL (2011-2013) aqui',
+    'O papai da Kiara',
+    'O casadórr',
+    'O Camarada Gustavinho ☭'
+  ];
+
+  return selectRandomItem(gustavinhoVariations).selectedItem;
+}
+
+type Quote = {
+  message: string;
+  who: string;
+}
+export function quoteGetter(): Quote {
+  const quotes: Quote[] = [
+    {
+      message: 'Olha esse cara como ele é bom',
+      who: 'Gustavo Carneiro',
+    },
+    {
+      message: 'Para quem ganha 2k limpinho, isso ai é troco',
+      who: 'Dev Gustavinho',
+    },
+    {
+      message: 'Na minha época de ouro, eu ia era para o Pitombeira',
+      who: 'Saudoso Gustavinho',
+    },
+    {
+      message: 'Um dia desses eu comecei a assistir One Piece',
+      who: 'Otaku Gustavinho',
+    },
+    {
+      message: 'Deixa eu só descansar aqui 2 centavos e eu já faço',
+      who: 'Cansado Gustavinho'
+    },
+    {
+      message: 'Até ai tudo bem',
+      who: 'Gustavo bebado'
+    },
+    {
+      message: 'Tudo isso aqui é verdade até que tu me prove o contrário',
+      who: 'Gustavinho Honesto'
+    }, 
+    {
+      message: 'A verdade é que eu sei ler e escrever. As vezes nem sempre 100%',
+      who: 'Tecnólogo em Analise de Sistemas - Gustavo Carneiro'
+    },
+    {
+      message: 'Cara, eu choro vendo o ep.2x7 de Mob Psycho 100. O EP 6x15 de Bojack Horseman também. E quando tem aquela frase lá do manifesto "Se a classe trabalhadora tudo produz, a ela tudo pertence".',
+      who: 'Gustavo Carneiro'
+    },
+    {
+      message: 'Man, parei de trabalhar agora 21 horas e ainda vou ajudar tal pessoa aqui. Mais uma terça-feira normal',
+      who: 'Gustavo Carneiro'
+    },
+    {
+      message: 'Mano que saudade de jogar Getamped 2',
+      who: 'Gustavo "UraharaSan" Carneiro'
+    },
+    {
+      message: 'Cara, pouca coisa é tão boa na vida quanto sentar e conversar com outra pessoa. Eu sou viciado nisso, que coisa boa.',
+      who: 'Gustavo Social'
+    }
+  ]. map( q => {
+    const words = q.who.split(' ');
+    const lastWord = words.pop();
+    const rearranged = `— ${lastWord}, ${words.join(' ')}`;
+    return {
+      message: q.message,
+      who: rearranged,
+    }
+  });
+  return selectRandomItem<Quote>(quotes).selectedItem;
+} 
