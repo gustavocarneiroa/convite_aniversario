@@ -1,3 +1,5 @@
+import { variations } from "./messageFragments";
+
 const bp = [
   {
     id: "QWx6aXI6IGNoYXBpbmhhIPCfq7M",
@@ -61,6 +63,7 @@ const subs = [
   { id: "4pqhY2FqYWx6cuKaoQ", variation: 3 },
   { id: "cGFsaW1wc2VzdGFsIHwgY2FtaWxvaWRlcw", variation: 4 },
   { id: "YnJ1bm8gfCBiZW56aW5obw", variation: 4 },
+  { id: "VmlkYWx6ZXJhIPCfp5HigI3wn5K7", variation: 4},
 ].map((i) => {
   return { ...i, location: 1 };
 });
