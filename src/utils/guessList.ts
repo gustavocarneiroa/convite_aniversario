@@ -1,5 +1,3 @@
-import { variations } from "./messageFragments";
-
 const bp = [
   {
     id: "QWx6aXI6IGNoYXBpbmhhIPCfq7M",
